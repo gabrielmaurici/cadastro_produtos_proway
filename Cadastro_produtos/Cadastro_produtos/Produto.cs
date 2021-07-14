@@ -8,13 +8,13 @@ namespace Cadastro_produtos
 {
     class Produto
     {
-        int id = 0;
+        public int Id { get; set; }
         public string Nome { get; set; }
         public decimal Valor { get; set; }
 
-        public Produto(int id, string Nome, decimal Valor)
+        public Produto(int Id, string Nome, decimal Valor)
         {
-            this.id = id;
+            this.Id = Id;
             this.Nome = Nome;
             this.Valor = Valor;
         }

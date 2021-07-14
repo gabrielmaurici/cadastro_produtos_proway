@@ -9,7 +9,7 @@ namespace Cadastro_produtos
     class Menu
     {
         List<Produto> produtos = new List<Produto>();
-        List<Categorias> categorias = new List<Categorias>();
+        List<Categorias> categorias= new List<Categorias>();
 
         int countProduto = 1;
 
@@ -20,7 +20,7 @@ namespace Cadastro_produtos
             {
                 Console.Clear();
 
-                Console.WriteLine("1 - Cadastro de Produtos \n2 - Cadastro de Cateogiras \n3 - SAIR!!!");
+                Console.WriteLine("1 - Cadastro de Produtos \n2 - Cadastro de Cateogiras \n3 - Mostrar Dados \n4 - SAIR!!!");
 
                 int opcao = Convert.ToInt16(Console.ReadLine());
 
@@ -33,6 +33,9 @@ namespace Cadastro_produtos
                         CadastrarCategorias();
                         break;
                     case 3:
+                        mostrarDados();
+                        break;
+                    case 4:
                         return;
                 }
             }
@@ -66,5 +69,24 @@ namespace Cadastro_produtos
             categorias.Add(categoria);
         }
 
+        private void mostrarDados()
+        {
+            Console.Clear();
+            Console.WriteLine("*********** MOSTRAR DADOS **************** ");
+            Console.WriteLine("\nProdutos\n");
+
+            foreach(Produto prod in produtos)
+            {
+                Console.WriteLine($"Id: {prod.Id} -- Nome Produto: {prod.Nome} -- Valor Produto: {prod.Valor}");
+            }
+
+            Console.WriteLine("\nCategorias\n");
+
+            foreach(Categorias categoria in categorias)
+            {
+                Console.WriteLine($"Id: {categoria.Id} -- Nome Categoria {categoria.Nome} -- Descrição Categoria: {categoria.Descricao}");
+            }
+            Console.ReadKey();
+        }
     }
 }

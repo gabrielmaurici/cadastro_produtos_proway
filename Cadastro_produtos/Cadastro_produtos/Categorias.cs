@@ -8,7 +8,7 @@ namespace Cadastro_produtos
 {
     class Categorias
     {
-        int id = 0;
+        public int Id { get; set; }
 
         public string Nome { get; set; }
 
@@ -16,7 +16,7 @@ namespace Cadastro_produtos
 
         public Categorias(int id, string nome, string descricao)
         {
-            this.id = id;
+            this.Id = id;
             this.Nome = nome;
             this.Descricao = descricao;
         }
