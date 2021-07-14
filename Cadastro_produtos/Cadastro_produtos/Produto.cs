@@ -8,7 +8,7 @@ namespace Cadastro_produtos
 {
     class Produto
     {
-        int id = 0
+        int id = 0;
         public string Nome { get; set; }
         public decimal Valor { get; set; }
 
