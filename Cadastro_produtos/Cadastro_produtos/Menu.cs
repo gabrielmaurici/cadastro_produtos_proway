@@ -12,6 +12,8 @@ namespace Cadastro_produtos
         List<Categorias> categorias = new List<Categorias>();
 
         int countProduto = 1;
+
+        int countCategorias = 1;
         public void CadastrarProduto()
         {
             Console.Write("Digite um Produto: ");
@@ -24,6 +26,20 @@ namespace Cadastro_produtos
             countProduto++;
 
             produtos.Add(produto);
+        }
+
+        public void CadastrarCategorias()
+        {
+            Console.Write("\nDigite uma categoria: ");
+            string nome = Console.ReadLine();
+
+            Console.Write("Digite a descrição da categoria: ");
+            string descricao = Console.ReadLine();
+
+            Categorias categoria = new Categorias(countCategorias, nome, descricao);
+            countCategorias++;
+
+            categorias.Add(categoria);
         }
 
     }
