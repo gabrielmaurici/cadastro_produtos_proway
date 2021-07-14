@@ -12,10 +12,7 @@ namespace Cadastro_produtos
         {
             Menu menu = new Menu();
 
-            menu.CadastrarProduto();
-            menu.CadastrarCategorias();
-            Console.ReadKey();
-
+            menu.menuOpcaos();
         }
     }
 }

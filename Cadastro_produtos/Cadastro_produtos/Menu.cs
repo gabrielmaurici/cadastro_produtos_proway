@@ -14,7 +14,30 @@ namespace Cadastro_produtos
         int countProduto = 1;
 
         int countCategorias = 1;
-        public void CadastrarProduto()
+        public void menuOpcaos()
+        {
+            while (true)
+            {
+                Console.Clear();
+
+                Console.WriteLine("1 - Cadastro de Produtos \n2 - Cadastro de Cateogiras \n3 - SAIR!!!");
+
+                int opcao = Convert.ToInt16(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        CadastrarProduto();
+                        break;
+                    case 2:
+                        CadastrarCategorias();
+                        break;
+                    case 3:
+                        return;
+                }
+            }
+        }
+        private void CadastrarProduto()
         {
             Console.Write("Digite um Produto: ");
             string nome = Console.ReadLine();
@@ -26,9 +49,10 @@ namespace Cadastro_produtos
             countProduto++;
 
             produtos.Add(produto);
+
         }
 
-        public void CadastrarCategorias()
+        private void CadastrarCategorias()
         {
             Console.Write("\nDigite uma categoria: ");
             string nome = Console.ReadLine();
