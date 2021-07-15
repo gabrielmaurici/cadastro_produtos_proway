@@ -11,7 +11,6 @@ namespace Cadastro_produtos
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-
             menu.menuOpcaos();
         }
     }
