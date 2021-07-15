@@ -7,34 +7,32 @@ using System.Threading.Tasks;
 
 namespace Cadastro_produtos
 {
-    public class Categorias : BaseModels
+    public class Categoria : BaseModels
     {
         public string Nome { get; set; }
 
         public string Descricao { get; set; }
 
-        public Categorias(int id, string nome, string descricao)
+        public Categoria(int id, string nome, string descricao)
         {
             this.Id = id;
             this.Nome = nome;
             this.Descricao = descricao;
         }
 
-        public Categorias()
+        public Categoria()
         {
         }
 
-        public static void CadastrarCategorias(List<Categorias> categorias)
+        public static void CadastrarCategorias(List<Categoria> categorias)
         {
-            Console.Write("\nDigite uma categoria: ");
-            string nome = Console.ReadLine();
-
+            Console.Write("Digite um nome para a categoria: ");
+            string nome = Validacao.ValidaString();
             Console.Write("Digite a descrição da categoria: ");
-            string descricao = Console.ReadLine();
-
+            string descricao = Validacao.ValidaString(); 
+            Console.Clear();
             int id = categorias.Count + 1;
-            Categorias categoria = new Categorias(id, nome, descricao);
-
+            Categoria categoria = new Categoria(id, nome, descricao);
             categorias.Add(categoria);
         }
     }

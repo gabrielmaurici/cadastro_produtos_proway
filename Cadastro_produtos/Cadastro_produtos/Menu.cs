@@ -10,7 +10,7 @@ namespace Cadastro_produtos
     class Menu 
     {
         List<Produto> produtos = new List<Produto>();
-        List<Categorias> categorias = new List<Categorias>();
+        List<Categoria> categorias = new List<Categoria>();
 
         int countProduto = 1;
 
@@ -35,7 +35,7 @@ namespace Cadastro_produtos
                         break;
                     case 2:
                         Console.Clear();
-                        Categorias.CadastrarCategorias(categorias);
+                        Categoria.CadastrarCategorias(categorias);
                         break;
                     case 3:
                         Console.Clear();
@@ -59,7 +59,7 @@ namespace Cadastro_produtos
 
             Console.WriteLine("\nCategorias\n");
 
-            foreach (Categorias categoria in categorias)
+            foreach (Categoria categoria in categorias)
             {
                 Console.WriteLine($"Id: {categoria.Id} -- Nome Categoria {categoria.Nome} -- Descrição Categoria: {categoria.Descricao}");
             }

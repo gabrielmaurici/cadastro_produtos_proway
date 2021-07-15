@@ -11,9 +11,9 @@ namespace Cadastro_produtos
     {
         public string Nome { get; set; }
         public decimal Valor { get; set; }
-        public Categorias Categoria { get; set; }
+        public Categoria Categoria { get; set; }
 
-        public Produto(int Id, string Nome, decimal Valor, Categorias Categoria)
+        public Produto(int Id, string Nome, decimal Valor, Categoria Categoria)
         {
             this.Id = Id;
             this.Nome = Nome;
@@ -26,29 +26,19 @@ namespace Cadastro_produtos
 
         }
 
-        public static void CadastrarProduto(List<Categorias> categorias, List<Produto> produtos)
+        public static void CadastrarProduto(List<Categoria> categorias, List<Produto> produtos)
         {
 
             Console.Write("Digite um Produto: ");
-            string nome = Console.ReadLine();
+            string nome = Validacao.ValidaString();
 
             Console.Write("Digite o Valor do produto: ");
-            Console.Clear();
 
             decimal valor = 0;
 
-            try
-            {
-                valor = Convert.ToDecimal(Console.ReadLine());
-            }
-            catch
-            {
-                Console.WriteLine("Valor impossivel!, aperte qualquer tecla para continuar");
-                Console.ReadKey();
-                return;
-            }
-
-            Categorias novaCategoria = new Categorias();
+            valor = Validacao.ValidaDecimal();
+            Console.Clear();
+            Categoria novaCategoria = new Categoria();
 
             bool deubom = false;
             do
@@ -56,13 +46,14 @@ namespace Cadastro_produtos
                 if (categorias.Count > 0)
                 {
                     Console.WriteLine("Categorias disponíveis:");
-                    foreach (Categorias categoria2 in categorias)
+                    foreach (Categoria categoria2 in categorias)
                     {
                         Console.WriteLine($"\n{categoria2.Nome}");
                     }
-                    Console.WriteLine("\nDigite a categoria: ");
+                    Console.WriteLine("\n--------------" +
+                        $"\nDigite a categoria para o {nome}: ");
                     string categoria = Console.ReadLine();
-                    foreach (Categorias categoria1 in categorias)
+                    foreach (Categoria categoria1 in categorias)
                     {
                         if (categoria1.Nome == categoria)
                         {
@@ -75,25 +66,22 @@ namespace Cadastro_produtos
                             Console.WriteLine("Categoria inválida");
                             Console.WriteLine("\nDeseja cadastras uma nova categoria? (s/n)");
                             string resposta = Console.ReadLine();
+                            Console.Clear();
                             if (resposta == "s")
                             {
-                                Categorias.CadastrarCategorias(categorias);
-                            } else
-                            {
-                                break;
+                                Categoria.CadastrarCategorias(categorias);
                             }
-                            return;
+                            break;
                         }
+                        break;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Nenhuma categoria cadastrada, deseja criar uma nova? (s/n)");
-                    string resposta = Console.ReadLine();
-                    if (resposta == "s")
-                    {
-                        Categorias.CadastrarCategorias(categorias);
-                    }
+                    Console.WriteLine("Nenhuma categoria cadastrada, aperte qualquer tecla para criar uma nova categoria");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Categoria.CadastrarCategorias(categorias);
                 }
             } while (!deubom);
 
