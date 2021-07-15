@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cadastro_produtos.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,12 +30,15 @@ namespace Cadastro_produtos
                 switch (opcao)
                 {
                     case 1:
-                        CadastrarProduto();
+                        Console.Clear();
+                        Produto.CadastrarProduto(categorias, produtos);
                         break;
                     case 2:
-                        CadastrarCategorias();
+                        Console.Clear();
+                        Categorias.CadastrarCategorias(categorias);
                         break;
                     case 3:
+                        Console.Clear();
                         mostrarDados();
                         break;
                     case 4:
@@ -42,50 +46,6 @@ namespace Cadastro_produtos
                 }
             }
         }
-        private void CadastrarProduto()
-        {
-
-            Console.Write("Digite um Produto: ");
-            string nome = Console.ReadLine();
-
-            Console.Write("Digite o Valor do produto: ");
-
-
-            decimal valor = 0;
-
-            try
-            {
-                valor = Convert.ToDecimal(Console.ReadLine());
-            }
-            catch
-            {
-                Console.WriteLine("Valor impossivel!, aperte qualquer tecla para continuar");
-                Console.ReadKey();
-                return;
-            }
-
-
-            Produto produto = new Produto(countProduto, nome, valor);
-            countProduto++;
-
-            produtos.Add(produto);
-
-        }
-
-        private void CadastrarCategorias()
-        {
-            Console.Write("\nDigite uma categoria: ");
-            string nome = Console.ReadLine();
-
-            Console.Write("Digite a descrição da categoria: ");
-            string descricao = Console.ReadLine();
-
-            Categorias categoria = new Categorias(countCategorias, nome, descricao);
-            countCategorias++;
-
-            categorias.Add(categoria);
-        }
-
         private void mostrarDados()
         {
             Console.Clear();
@@ -94,7 +54,7 @@ namespace Cadastro_produtos
 
             foreach (Produto prod in produtos)
             {
-                Console.WriteLine($"Id: {prod.Id} -- Nome Produto: {prod.Nome} -- Valor Produto: {prod.Valor}");
+                Console.WriteLine($"Id: {prod.Id} -- Nome Produto: {prod.Nome} -- Valor Produto: {prod.Valor} -- Categoria: {prod.Categoria.Nome}");
             }
 
             Console.WriteLine("\nCategorias\n");
@@ -105,5 +65,50 @@ namespace Cadastro_produtos
             }
             Console.ReadKey();
         }
+
+        //public void Cadastro(BaseModels model)
+        //{
+        //    if (model.GetType() == typeof(Produto))
+        //    {
+        //        Console.Write("Digite um Produto: ");
+        //        string nome = Console.ReadLine();
+
+        //        Console.Write("Digite o Valor do produto: ");
+
+
+        //        decimal valor = 0;
+
+        //        try
+        //        {
+        //            valor = Convert.ToDecimal(Console.ReadLine());
+        //        }
+        //        catch
+        //        {
+        //            Console.WriteLine("Valor impossivel!, aperte qualquer tecla para continuar");
+        //            Console.ReadKey();
+        //            return;
+        //        }
+
+
+        //        Produto produto = new Produto(countProduto, nome, valor);
+        //        countProduto++;
+
+        //        produtos.Add(produto);
+        //    }
+        //    else if (model.GetType() == typeof(Categorias))
+        //    {
+        //        Console.Write("\nDigite uma categoria: ");
+        //        string nome = Console.ReadLine();
+
+        //        Console.Write("Digite a descrição da categoria: ");
+        //        string descricao = Console.ReadLine();
+
+        //        Categorias categoria = new Categorias(countCategorias, nome, descricao);
+        //        countCategorias++;
+
+        //        categorias.Add(categoria);
+        //    }
+        //}
+
     }
 }
