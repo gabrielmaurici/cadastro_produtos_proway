@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cadastro_produtos
 {
-    class Produto
+    struct Produto
     {
         public int Id { get; set; }
         public string Nome { get; set; }

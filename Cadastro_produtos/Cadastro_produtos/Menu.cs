@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cadastro_produtos
 {
-    class Menu
+    class Menu 
     {
         List<Produto> produtos = new List<Produto>();
         List<Categorias> categorias = new List<Categorias>();
@@ -16,6 +16,8 @@ namespace Cadastro_produtos
         int countCategorias = 1;
         public void menuOpcaos()
         {
+
+            
             while (true)
             {
                 Console.Clear();
@@ -42,6 +44,7 @@ namespace Cadastro_produtos
         }
         private void CadastrarProduto()
         {
+
             Console.Write("Digite um Produto: ");
             string nome = Console.ReadLine();
 
