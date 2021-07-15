@@ -9,7 +9,7 @@ namespace Cadastro_produtos
     class Menu
     {
         List<Produto> produtos = new List<Produto>();
-        List<Categorias> categorias= new List<Categorias>();
+        List<Categorias> categorias = new List<Categorias>();
 
         int countProduto = 1;
 
@@ -46,7 +46,21 @@ namespace Cadastro_produtos
             string nome = Console.ReadLine();
 
             Console.Write("Digite o Valor do produto: ");
-            decimal valor = Convert.ToDecimal(Console.ReadLine());
+
+
+            decimal valor = 0;
+
+            try
+            {
+                valor = Convert.ToDecimal(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Valor impossivel!, aperte qualquer tecla para continuar");
+                Console.ReadKey();
+                return;
+            }
+
 
             Produto produto = new Produto(countProduto, nome, valor);
             countProduto++;
@@ -75,14 +89,14 @@ namespace Cadastro_produtos
             Console.WriteLine("*********** MOSTRAR DADOS **************** ");
             Console.WriteLine("\nProdutos\n");
 
-            foreach(Produto prod in produtos)
+            foreach (Produto prod in produtos)
             {
                 Console.WriteLine($"Id: {prod.Id} -- Nome Produto: {prod.Nome} -- Valor Produto: {prod.Valor}");
             }
 
             Console.WriteLine("\nCategorias\n");
 
-            foreach(Categorias categoria in categorias)
+            foreach (Categorias categoria in categorias)
             {
                 Console.WriteLine($"Id: {categoria.Id} -- Nome Categoria {categoria.Nome} -- Descrição Categoria: {categoria.Descricao}");
             }
