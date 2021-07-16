@@ -39,8 +39,6 @@ namespace Cadastro_produtos
             valor = Validacao.ValidaDecimal();
             Console.Clear();
             Categoria novaCategoria = new Categoria();
-
-            bool deubom = false;
             do
             {
                 if (categorias.Count > 0)
@@ -59,9 +57,9 @@ namespace Cadastro_produtos
                         {
                             inputCategorias = categoria1.Nome;
                             novaCategoria = categoria1;
-                            deubom = true;
                             break;
-                        } else if (categoria1.Id == categorias.Count)
+                        }
+                        else if (categoria1.Id == categorias.Count)
                         {
                             Console.WriteLine("Categoria inválida");
                             Console.WriteLine("\nDeseja cadastras uma nova categoria? (s/n)");
@@ -82,13 +80,10 @@ namespace Cadastro_produtos
                     Console.Clear();
                     Categoria.CadastrarCategorias(categorias);
                 }
-            } while (!deubom);
-
+            } while (novaCategoria.Id == 0);
             int id = produtos.Count + 1;
             Produto produto = new Produto(id, nome, valor, novaCategoria);
-
             produtos.Add(produto);
-
         }
     }
 }

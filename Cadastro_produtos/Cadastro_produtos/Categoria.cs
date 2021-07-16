@@ -36,5 +36,10 @@ namespace Cadastro_produtos
             Console.WriteLine("Categoria cadastrada com sucesso!");
             Menu.categorias.Add(categoria);
         }
+
+        public static void ValidaCategoria()
+        {
+
+        }
     }
 }
