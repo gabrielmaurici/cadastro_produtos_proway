@@ -9,8 +9,8 @@ namespace Cadastro_produtos
 {
     class Menu 
     {
-        List<Produto> produtos = new List<Produto>();
-        List<Categoria> categorias = new List<Categoria>();
+        public static List<Produto> produtos = new List<Produto>();
+        public static List<Categoria> categorias = new List<Categoria>();
 
         int countProduto = 1;
 
@@ -31,7 +31,7 @@ namespace Cadastro_produtos
                 {
                     case 1:
                         Console.Clear();
-                        Produto.CadastrarProduto(categorias, produtos);
+                        Produto.CadastrarProduto(produtos);
                         break;
                     case 2:
                         Console.Clear();

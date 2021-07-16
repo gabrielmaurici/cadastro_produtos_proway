@@ -26,9 +26,9 @@ namespace Cadastro_produtos
 
         }
 
-        public static void CadastrarProduto(List<Categoria> categorias, List<Produto> produtos)
+        public static void CadastrarProduto(List<Produto> produtos)
         {
-
+            List<Categoria> categorias = Menu.categorias;
             Console.Write("Digite um Produto: ");
             string nome = Validacao.ValidaString();
 
@@ -52,16 +52,16 @@ namespace Cadastro_produtos
                     }
                     Console.WriteLine("\n--------------" +
                         $"\nDigite a categoria para o {nome}: ");
-                    string categoria = Console.ReadLine();
+                    string inputCategorias = Console.ReadLine();
                     foreach (Categoria categoria1 in categorias)
                     {
-                        if (categoria1.Nome == categoria)
+                        if (categoria1.Nome.Equals(inputCategorias))
                         {
+                            inputCategorias = categoria1.Nome;
                             novaCategoria = categoria1;
                             deubom = true;
                             break;
-                        }
-                        else
+                        } else if (categoria1.Id == categorias.Count)
                         {
                             Console.WriteLine("Categoria inválida");
                             Console.WriteLine("\nDeseja cadastras uma nova categoria? (s/n)");
@@ -73,7 +73,6 @@ namespace Cadastro_produtos
                             }
                             break;
                         }
-                        break;
                     }
                 }
                 else

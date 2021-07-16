@@ -33,7 +33,8 @@ namespace Cadastro_produtos
             Console.Clear();
             int id = categorias.Count + 1;
             Categoria categoria = new Categoria(id, nome, descricao);
-            categorias.Add(categoria);
+            Console.WriteLine("Categoria cadastrada com sucesso!");
+            Menu.categorias.Add(categoria);
         }
     }
 }
